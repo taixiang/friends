@@ -10,6 +10,7 @@ import android.os.PersistableBundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -142,8 +143,10 @@ public class MainActivity extends Activity {
 
     private class MyAdapter extends BaseAdapter implements ItemView.ICommentListener,ItemView.IItemContentListener,ItemView.IShowLikesListener{
         private List<Item> lists;
+        private SparseBooleanArray sparseBooleanArray;
         public MyAdapter(List<Item> lists) {
             this.lists = lists;
+            sparseBooleanArray = new SparseBooleanArray();
         }
 
         @Override
@@ -164,7 +167,7 @@ public class MainActivity extends Activity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ItemView itemView = new ItemView(getBaseContext());
-            itemView.setmData(lists.get(position));
+            itemView.setmData(lists.get(position),sparseBooleanArray);
             itemView.setPosition(position);
             itemView.setCommentListener(this);
             itemView.setItemContentListener(this);

@@ -1,33 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
+<items version="2" />
 
-    <item
-        jar="E:\Mine\friends\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="E:\Mine\friends\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-a643b0c3fc57c7a67ac301a8d4bc40f8813ac219.jar" />
-    </item>
-    <item
-        jar="E:\Androidtools\mysdk\Sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="E:\Mine\friends\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-e9fdfd63ce7607599b1a90aaa937a387f3d1578b.jar" />
-    </item>
-    <item
-        jar="E:\Mine\friends\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="E:\Mine\friends\build\intermediates\pre-dexed\debug\classes-a4a4cd28d7808b504bab3d8f204aaad5b6f83060.jar" />
-    </item>
-    <item
-        jar="E:\Mine\friends\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="E:\Mine\friends\build\intermediates\pre-dexed\debug\classes-6ee4c4e6bc7cefcfafdd4eaa321408aa68a50d6b.jar" />
-    </item>
-
-</items>

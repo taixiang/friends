@@ -1,61 +1,65 @@
 -- Merging decision tree log ---
 manifest
-ADDED from AndroidManifest.xml:2:1
+ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:2:1-25:12
 	xmlns:android
-		ADDED from AndroidManifest.xml:2:11
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:2:11-69
 	package
-		ADDED from AndroidManifest.xml:3:5
-		INJECTED from AndroidManifest.xml:0:0
-		INJECTED from AndroidManifest.xml:0:0
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:3:5-34
+		INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml
+		INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from AndroidManifest.xml:0:0
-		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml
+		INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from AndroidManifest.xml:0:0
-		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml
+		INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml
 application
-ADDED from AndroidManifest.xml:5:5
-MERGED from com.android.support:appcompat-v7:22.2.1:22:5
-MERGED from com.android.support:support-v4:22.2.1:22:5
-MERGED from com.android.support:support-v4:22.2.1:22:5
+ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:5:5-23:19
+MERGED from [:AndroidLibs:] E:\Mine\friends\build\intermediates\exploded-aar\AndroidLibs\AndroidManifest.xml:11:5-12:19
+MERGED from [org.xutils:xutils:3.3.8] E:\Mine\friends\build\intermediates\exploded-aar\org.xutils\xutils\3.3.8\AndroidManifest.xml:12:5-20
+MERGED from [com.android.support:appcompat-v7:22.2.1] E:\Mine\friends\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.1] E:\Mine\friends\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.1] E:\Mine\friends\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from AndroidManifest.xml:8:9
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:8:9-41
 	android:allowBackup
-		ADDED from AndroidManifest.xml:6:9
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:6:9-35
 	android:icon
-		ADDED from AndroidManifest.xml:7:9
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:7:9-43
 	android:theme
-		ADDED from AndroidManifest.xml:9:9
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:9:9-40
 activity#com.example.friends.MainActivity
-ADDED from AndroidManifest.xml:10:9
+ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:10:9-18:20
 	android:label
-		ADDED from AndroidManifest.xml:12:13
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:12:13-45
 	android:name
-		ADDED from AndroidManifest.xml:11:13
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:11:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:13:13
+ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:13:13-17:29
 action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:14:17
+ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:14:17-69
 	android:name
-		ADDED from AndroidManifest.xml:14:25
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:14:25-66
 category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:16:17
+ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:16:17-77
 	android:name
-		ADDED from AndroidManifest.xml:16:27
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:16:27-74
 activity#com.example.friends.Main2Activity
-ADDED from AndroidManifest.xml:19:9
+ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:19:9-22:20
 	android:label
-		ADDED from AndroidManifest.xml:21:13
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:21:13-57
 	android:name
-		ADDED from AndroidManifest.xml:20:13
+		ADDED from E:\Mine\friends\src\main\AndroidManifest.xml:20:13-42
 uses-sdk
-INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
-MERGED from com.android.support:appcompat-v7:22.2.1:20:5
-MERGED from com.android.support:support-v4:22.2.1:20:5
-MERGED from com.android.support:support-v4:22.2.1:20:5
+INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [:AndroidLibs:] E:\Mine\friends\build\intermediates\exploded-aar\AndroidLibs\AndroidManifest.xml:7:5-9:41
+MERGED from [org.xutils:xutils:3.3.8] E:\Mine\friends\build\intermediates\exploded-aar\org.xutils\xutils\3.3.8\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:appcompat-v7:22.2.1] E:\Mine\friends\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.2.1] E:\Mine\friends\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.2.1] E:\Mine\friends\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
-		INJECTED from AndroidManifest.xml:0:0
-		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml
+		INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from AndroidManifest.xml:0:0
-		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml
+		INJECTED from E:\Mine\friends\src\main\AndroidManifest.xml

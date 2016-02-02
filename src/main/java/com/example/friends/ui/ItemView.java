@@ -6,6 +6,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ public class ItemView extends LinearLayout implements View.OnClickListener{
     private IShowLikesListener iShowLikes;
     private boolean show_like ;
 
+
     public ItemView(Context context) {
         super(context);
         initView(context);
@@ -87,12 +89,12 @@ public class ItemView extends LinearLayout implements View.OnClickListener{
         this.position = position;
     }
 
-    public void setmData(Item mData) {
+    public void setmData(Item mData,SparseBooleanArray sparseBooleanArray) {
         this.mData = mData;
         logoImage.setImageResource(mData.getPortraitId());
         name.setText(mData.getNickName());
         time.setText(mData.getCreatedAt());
-        moreTextView.setContentText(mData.getContent());
+        moreTextView.setContentText(mData.getContent(),sparseBooleanArray,position);
         if(mData.getImages()!= null){
             gridView.setVisibility(VISIBLE);
             gridView.setAdapter(new GridAdapter(mData.getImages()));

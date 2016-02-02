@@ -7,11 +7,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,6 +41,13 @@ public class MoreTextView extends LinearLayout {
     OnClickListener contentTextViewOnClickListener;
     OnClickListener tipTextViewOnClickListener;
 
+    boolean mCollapsed = true;
+    int mTextHeightWithMaxLines;
+    int mMarginBetweenTxtAndBottom;
+    int mCollapsedHeight;
+    boolean mRelayout;
+    SparseBooleanArray mCollapsedStatus;
+    int mPosition;
     public MoreTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
@@ -51,53 +62,62 @@ public class MoreTextView extends LinearLayout {
                 tipTextViewOnClick();
             }
         });
-
-
+        initFlag();
     }
 
-    private void tipTextViewOnClick(){
-        if(lineNum <= initLines){
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+
+        contentTextView.setMaxLines(Integer.MAX_VALUE);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        if(contentTextView.getLineCount() < 6){
             return;
         }
-        if(SEE_ALL == flag){
-            tipTextView.setText("收起");
-            flag = PICK_UP;
-            contentTextView.setMaxLines(lineNum);
-        }else if(PICK_UP = flag){
-            tipTextView.setText("全文");
-            flag = SEE_ALL;
-            contentTextView.setMaxLines(initLines);
+        if(contentTextView.getLineCount() > 15){
+            contentTextView.setSingleLine();
+            contentTextView.setEllipsize(TextUtils.TruncateAt.END);
+            return;
         }
+        mTextHeightWithMaxLines = getRealTextViewHeight(contentTextView);
+        if(mCollapsed){
+            contentTextView.setMaxLines(6);
+        }else {
+            tipTextView.setText("收起");
+        }
+        tipTextView.setVisibility(VISIBLE);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+//        if (mCollapsed) {
+//            // Gets the margin between the TextView's bottom and the ViewGroup's bottom
+//            contentTextView.post(new Runnable() {
+//                @Override
+//                public void run() {
+//                    mMarginBetweenTxtAndBottom = getHeight() - contentTextView.getHeight();
+//                }
+//            });
+//            // Saves the collapsed height of this ViewGroup
+//            mCollapsedHeight = getMeasuredHeight();
+//        }
     }
 
-    private void initMyTextView(){
-        Log.i("》》》》 ","  linenum="+lineNum);
-        if(lineNum > maxLines){
-            tipTextView.setVisibility(GONE);
-            Log.i("》》》》   ", " 1111111 ");
-            contentTextView.setSingleLine(true);
-            contentTextView.setEllipsize(TextUtils.TruncateAt.END);
-            contentTextView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getContext(), Main2Activity.class);
-                    intent.putExtra("content", contentTextView.getText().toString());
-                    getContext().startActivity(intent);
-                }
-            });
-        }else if(lineNum > initLines && lineNum < maxLines){
-            Log.i("》》》》   "," 22222222 ");
-            contentTextView.setSingleLine(false);
-            if(tipTextView.getVisibility() != VISIBLE){
-                tipTextView.setVisibility(VISIBLE);
-            }
+    private int getRealTextViewHeight(TextView textView){
+        int textHeight = textView.getLayout().getLineTop(textView.getLineCount());
+        int padding = textView.getCompoundPaddingTop() + textView.getCompoundPaddingBottom();
+        return textHeight + padding;
+    }
+
+
+    private void tipTextViewOnClick(){
+
+        mCollapsed = !mCollapsed;
+        if (mCollapsedStatus != null) {
+            mCollapsedStatus.put(mPosition, mCollapsed);
+        }
+        if(mCollapsed){
+            tipTextView.setText("全文");
+            contentTextView.setMaxLines(contentTextView.getLineCount());
+        }else {
+            tipTextView.setText("收起");
             contentTextView.setMaxLines(initLines);
-        }else if(lineNum <= initLines){
-            Log.i("》》》》   "," 333333333 ");
-            contentTextView.setSingleLine(false);
-            if(tipTextView.getVisibility() != GONE){
-                tipTextView.setVisibility(GONE);
-            }
         }
     }
 
@@ -109,39 +129,17 @@ public class MoreTextView extends LinearLayout {
         }
     }
 
-    private void getLineNum(){
-        contentTextView.post(new Runnable() {
-            @Override
-            public void run() {
-                lineNum = contentTextView.getLineCount();
-                initMyTextView();
-            }
-        });
-    }
 
-    public void setContentText(String content){
+    public void setContentText(String content,SparseBooleanArray collapsedStatus, int position){
+        mCollapsedStatus = collapsedStatus;
+        mPosition = position;
+        boolean isCollapsed = collapsedStatus.get(position, true);
+        clearAnimation();
+        mCollapsed = isCollapsed;
         contentTextView.setText(content);
-        getLineNum();
-        initFlag();
-        contentTextView.setVisibility(VISIBLE);
-        WindowManager wm = (WindowManager) getContext()
-                .getSystemService(Context.WINDOW_SERVICE);
-        int width = wm.getDefaultDisplay().getWidth();
-        int height = measureTextViewHeight(contentTextView.getText().toString(),(int)contentTextView.getTextSize(),width);
-        Log.i("》》》》  ","  height"+ height);
+
 
     }
-
-    private int measureTextViewHeight(String text, int textSize, int deviceWidth) {
-        TextView textView = new TextView(getContext());
-        textView.setText(text);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-        int widthMeasureSpec = MeasureSpec.makeMeasureSpec(deviceWidth, MeasureSpec.AT_MOST);
-        int heightMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
-        textView.measure(widthMeasureSpec, heightMeasureSpec);
-        return textView.getMeasuredHeight();
-    }
-
 
     public TextView getContentTextView() {
         return contentTextView;
